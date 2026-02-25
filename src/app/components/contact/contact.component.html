@@ -7,12 +7,30 @@
       <p class="section-sub contact-sub">Tell us about your organisation and we'll show you exactly how Sama9 can make a difference.</p>
     </div>
 
-    <!-- ── Success Alert ── -->
-    <div class="alert alert-success d-flex align-items-center gap-2 mt-4" *ngIf="submitSuccess" role="alert">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" style="flex-shrink:0">
-        <polyline points="20 6 9 17 4 12"/>
-      </svg>
-      <span>Thank you! Your enquiry has been submitted successfully. Our team will contact you soon.</span>
+    <!-- ── Success Card ── -->
+    <div class="sc-wrap" *ngIf="submitSuccess" role="status" aria-live="polite">
+      <div class="sc-card">
+
+        <div class="sc-icon-wrap" aria-hidden="true">
+          <svg class="sc-check" viewBox="0 0 80 80" width="80" height="80" fill="none">
+            <circle class="sc-circle" cx="40" cy="40" r="34"
+              stroke="#00d4a0" stroke-width="3" stroke-linecap="round"/>
+            <polyline class="sc-tick" points="23,40 34,51 57,28"
+              stroke="#00d4a0" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <h3 class="sc-title">Message Sent Successfully!</h3>
+        <p class="sc-msg">
+          Thank you for contacting Sama Technologies.<br>
+          Our team will contact you within 1 business day.
+        </p>
+
+        <button class="btn-primary sc-btn" type="button" (click)="resetForm()">
+          Submit Another Enquiry
+        </button>
+
+      </div>
     </div>
 
     <!-- ── Contact Form ── -->

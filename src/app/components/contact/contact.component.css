@@ -84,20 +84,89 @@ textarea.form-control { resize: vertical; min-height: 130px; }
 
 .char-count.char-near { color: #f7a84f; opacity: 1; }
 
-/* ── SUCCESS BANNER ── */
-.form-success {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: rgba(0,212,160,0.08);
-  border: 1px solid rgba(0,212,160,0.3);
-  border-radius: 12px;
-  padding: 1rem 1.25rem;
-  margin-top: 2.5rem;
-  color: #00d4a0;
-  font-size: 0.9rem;
-  font-weight: 500;
+/* ── SUCCESS CARD ── */
+@keyframes sc-fadein {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
+
+@keyframes sc-circle {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes sc-tick {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes sc-glow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.08); }
+}
+
+.sc-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 2.5rem 1rem;
+  animation: sc-fadein 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.sc-card {
+  background: rgba(14, 17, 38, 0.72);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 24px;
+  padding: 3rem 2.5rem 2.5rem;
+  text-align: center;
+  max-width: 460px;
+  width: 100%;
+  box-shadow:
+    0 24px 64px rgba(0,0,0,0.45),
+    0 0 0 1px rgba(255,255,255,0.04),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+.sc-icon-wrap {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.75rem;
+  filter: drop-shadow(0 0 18px rgba(0,212,160,0.45));
+  animation: sc-glow 2.5s ease-in-out 1.2s infinite;
+}
+
+.sc-check { display: block; }
+
+/* Circle draws first */
+.sc-circle {
+  stroke-dasharray: 214;
+  stroke-dashoffset: 214;
+  animation: sc-circle 0.65s 0.15s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Tick draws after circle completes */
+.sc-tick {
+  stroke-dasharray: 56;
+  stroke-dashoffset: 56;
+  animation: sc-tick 0.4s 0.72s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.sc-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--c-text);
+  letter-spacing: -0.02em;
+  margin: 0 0 0.85rem;
+}
+
+.sc-msg {
+  font-size: 0.9rem;
+  color: var(--c-muted);
+  line-height: 1.72;
+  margin: 0 0 2rem;
+}
+
+.sc-btn { margin: 0 auto; }
 
 .form-note {
   margin-top: 1rem;
