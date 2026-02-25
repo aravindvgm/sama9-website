@@ -1,0 +1,93 @@
+<main class="products-page">
+
+  <!-- HERO -->
+  <header class="page-hero">
+    <div class="page-hero-bg" aria-hidden="true"></div>
+    <div class="page-hero-grid" aria-hidden="true"></div>
+
+    <div class="page-hero-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+          <li class="breadcrumb-sep" aria-hidden="true">/</li>
+          <li class="breadcrumb-item breadcrumb-current" aria-current="page">Products</li>
+        </ol>
+      </nav>
+
+      <div class="section-label">Our Products</div>
+      <h1 class="page-title">AI-powered solutions<br class="title-break"/> for every vertical.</h1>
+      <p class="page-subtitle">
+        Four purpose-built SaaS modules for schools, diagnostic centres, and enterprises —
+        each designed for real-world scale, unified by a single AI Copilot layer.
+      </p>
+
+      <div class="hero-chips">
+        <span class="hero-chip">🏫 School ERP</span>
+        <span class="hero-chip">🔬 Diagnostics</span>
+        <span class="hero-chip">⚙️ Enterprise</span>
+        <span class="hero-chip">✦ AI Copilot</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- PRODUCTS GRID -->
+  <section class="products-section" aria-label="Product catalogue">
+    <div class="products-grid">
+      <article
+        class="product-card reveal"
+        [ngClass]="[p.colorClass, 'reveal-delay-' + (i + 1)]"
+        *ngFor="let p of products; let i = index">
+
+        <div class="card-accent-bar" aria-hidden="true"></div>
+
+        <div class="card-body">
+          <div class="card-top">
+            <div class="card-icon">{{ p.icon }}</div>
+            <span class="card-badge" [ngClass]="'badge-' + p.badgeType">{{ p.badge }}</span>
+          </div>
+
+          <h2 class="card-name">{{ p.name }}</h2>
+          <p class="card-tagline">{{ p.tagline }}</p>
+          <p class="card-desc">{{ p.description }}</p>
+
+          <ul class="card-features" [attr.aria-label]="p.name + ' features'">
+            <li class="card-feature" *ngFor="let f of p.features">
+              <span class="feature-check" aria-hidden="true">✓</span>{{ f }}
+            </li>
+          </ul>
+
+          <div class="card-actions">
+            <a [routerLink]="p.ctaHref" class="btn-outline-accent">
+              {{ p.ctaLabel }}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band" aria-label="Get in touch">
+    <div class="cta-band-inner reveal">
+      <div class="cta-band-icon" aria-hidden="true">✦</div>
+      <h2 class="cta-band-title">Not sure which solution fits?</h2>
+      <p class="cta-band-sub">
+        Talk to our team. We'll map the right Sama9 modules to your organisation's exact needs.
+      </p>
+      <div class="cta-band-actions">
+        <a routerLink="/contact" class="btn-primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+          Book a Free Consultation
+        </a>
+        <a routerLink="/" class="btn-secondary">View Full Platform</a>
+      </div>
+    </div>
+  </section>
+
+</main>

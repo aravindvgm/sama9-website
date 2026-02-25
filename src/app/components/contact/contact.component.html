@@ -1,0 +1,123 @@
+<section id="contact">
+  <div class="contact-inner">
+
+    <div class="reveal">
+      <div class="section-label">Get in Touch</div>
+      <h2 class="section-title">Ready to transform your<br/>operations with AI?</h2>
+      <p class="section-sub contact-sub">Tell us about your organisation and we'll show you exactly how Sama9 can make a difference.</p>
+    </div>
+
+    <!-- ── Success Banner ── -->
+    <div class="form-success reveal reveal-delay-1" *ngIf="submitSuccess" role="alert">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+      <span>Message sent! We'll be in touch within 1 business day.</span>
+    </div>
+
+    <!-- ── Contact Form ── -->
+    <form
+      class="contact-form reveal reveal-delay-1"
+      [formGroup]="contactForm"
+      (ngSubmit)="handleSubmit()"
+      novalidate
+      *ngIf="!submitSuccess">
+
+      <div class="row g-3">
+
+        <!-- Name -->
+        <div class="col-md-6">
+          <label for="cf-name" class="form-label">Full Name</label>
+          <input
+            id="cf-name"
+            type="text"
+            class="form-control"
+            placeholder="Your full name"
+            formControlName="name"
+            [class.is-invalid]="isInvalid('name')"
+            [attr.aria-invalid]="isInvalid('name')"
+            aria-describedby="cf-name-err" />
+          <div id="cf-name-err" class="invalid-feedback" *ngIf="isInvalid('name')" role="alert">
+            {{ getError('name') }}
+          </div>
+        </div>
+
+        <!-- Phone -->
+        <div class="col-md-6">
+          <label for="cf-phone" class="form-label">Phone Number</label>
+          <div class="phone-wrap" [class.is-invalid]="isInvalid('phone')">
+            <span class="phone-prefix" aria-hidden="true">+91</span>
+            <input
+              id="cf-phone"
+              type="tel"
+              inputmode="numeric"
+              pattern="[0-9 ]*"
+              autocomplete="tel-national"
+              placeholder="98765 43210"
+              maxlength="11"
+              (input)="formatPhone($event)"
+              (blur)="f['phone'].markAsTouched()"
+              [attr.aria-invalid]="isInvalid('phone')"
+              aria-describedby="cf-phone-err" />
+          </div>
+          <div id="cf-phone-err" class="invalid-feedback" *ngIf="isInvalid('phone')" role="alert">
+            {{ getError('phone') }}
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="col-12">
+          <label for="cf-email" class="form-label">Email Address</label>
+          <input
+            id="cf-email"
+            type="email"
+            class="form-control"
+            placeholder="you@example.com"
+            formControlName="email"
+            [class.is-invalid]="isInvalid('email')"
+            [attr.aria-invalid]="isInvalid('email')"
+            aria-describedby="cf-email-err" />
+          <div id="cf-email-err" class="invalid-feedback" *ngIf="isInvalid('email')" role="alert">
+            {{ getError('email') }}
+          </div>
+        </div>
+
+        <!-- Message -->
+        <div class="col-12">
+          <label for="cf-msg" class="form-label">
+            Message
+            <span class="char-count" [class.char-near]="messageLength > 900">
+              {{ messageLength }}/1000
+            </span>
+          </label>
+          <textarea
+            id="cf-msg"
+            class="form-control"
+            rows="5"
+            placeholder="Tell us about your requirements or ask us anything…"
+            formControlName="message"
+            [class.is-invalid]="isInvalid('message')"
+            [attr.aria-invalid]="isInvalid('message')"
+            aria-describedby="cf-msg-err"></textarea>
+          <div id="cf-msg-err" class="invalid-feedback" *ngIf="isInvalid('message')" role="alert">
+            {{ getError('message') }}
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="col-12 text-center mt-1">
+          <button type="submit" class="btn-primary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+            Send Message
+          </button>
+          <p class="form-note">We typically respond within 1 business day.</p>
+        </div>
+
+      </div>
+    </form>
+
+  </div>
+</section>

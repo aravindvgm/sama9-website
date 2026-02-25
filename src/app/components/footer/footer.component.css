@@ -1,0 +1,89 @@
+footer {
+  background: var(--c-surface);
+  border-top: 1px solid var(--c-border);
+  padding: 3rem 5vw 2rem;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: wrap;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--c-border);
+  margin-bottom: 2rem;
+}
+
+.footer-brand { max-width: 280px; }
+
+/* .nav-logo base styles live in styles.css */
+.footer-logo { font-size: 1.35rem; }
+
+.footer-tagline {
+  font-size: 0.85rem;
+  color: var(--c-muted);
+  line-height: 1.7;
+  margin-top: 0.75rem;
+}
+
+.footer-cols {
+  display: flex;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.footer-col h4 {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  margin-bottom: 1rem;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-col a {
+  font-size: 0.875rem;
+  color: var(--c-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--c-text); }
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: var(--c-muted);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .footer-top { flex-direction: column; }
+  .footer-cols { gap: 2rem; }
+}
+
+.footer-company-name{
+
+white-space:nowrap;
+
+font-weight:600;
+
+}

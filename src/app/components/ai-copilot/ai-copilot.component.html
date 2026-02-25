@@ -1,0 +1,210 @@
+<section id="ai-copilot">
+
+  <!-- ── SECTION HEADER ── -->
+  <div class="section-header reveal">
+    <div class="section-label">AI Copilot</div>
+    <h2 class="section-title">One intelligent assistant.<br class="title-break"/> Every workflow, every module.</h2>
+    <p class="section-sub">
+      Ask in plain English. Sama9 Copilot queries live data, generates reports, triggers automations,
+      and surfaces predictive insights — across every module in real time.
+    </p>
+  </div>
+
+  <!-- ── SHOWCASE ── -->
+  <div class="copilot-showcase">
+
+    <!-- LEFT: Chat panel -->
+    <div class="chat-panel reveal">
+
+      <div class="chat-header">
+        <div class="chat-dots" aria-hidden="true">
+          <span class="dot dot-r"></span>
+          <span class="dot dot-y"></span>
+          <span class="dot dot-g"></span>
+        </div>
+        <div class="chat-tabs" role="tablist">
+          <button class="chat-tab chat-tab--active" role="tab" type="button">School ERP</button>
+          <button class="chat-tab" role="tab" type="button">Diagnostics</button>
+          <button class="chat-tab" role="tab" type="button">Enterprise</button>
+        </div>
+        <div class="chat-live-badge" aria-label="AI Copilot Live">
+          <span class="live-dot" aria-hidden="true"></span>
+          Live
+        </div>
+      </div>
+
+      <div class="chat-body" role="log" aria-label="AI Copilot conversation">
+
+        <div class="chat-msg chat-msg--ai">
+          <div class="avatar av-ai" aria-hidden="true">✦</div>
+          <div class="bubble bubble--ai">
+            Good morning. <strong>3 urgent items</strong> need attention today:
+            <ul class="ai-list">
+              <li>8 fee payments overdue — Grade 10</li>
+              <li>Timetable conflict — Room 204, Tue 11am</li>
+              <li>4 staff attendance exceptions</li>
+            </ul>
+            Shall I resolve them?
+          </div>
+        </div>
+
+        <div class="chat-msg chat-msg--user">
+          <div class="bubble bubble--user">Handle the fee reminders and fix the timetable conflict.</div>
+          <div class="avatar av-u" aria-hidden="true">You</div>
+        </div>
+
+        <div class="chat-msg chat-msg--ai">
+          <div class="avatar av-ai" aria-hidden="true">✦</div>
+          <div class="bubble bubble--ai">
+            <div class="action-list">
+              <div class="action-row action-done">
+                <span class="action-check" aria-hidden="true">✓</span>
+                Reminders sent to 8 parents via SMS &amp; email
+              </div>
+              <div class="action-row action-done">
+                <span class="action-check" aria-hidden="true">✓</span>
+                Room 204 conflict resolved → moved to Room 106
+              </div>
+              <div class="action-row action-running">
+                <span class="action-spin" aria-hidden="true">↻</span>
+                Generating updated timetable PDF…
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-msg chat-msg--ai" aria-label="AI is composing a response">
+          <div class="avatar av-ai" aria-hidden="true">✦</div>
+          <div class="typing-indicator">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="chat-input-row" aria-hidden="true">
+        <span class="chat-input-hint">Ask Sama9 Copilot anything…</span>
+        <button class="chat-send-btn" tabindex="-1" type="button">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </div>
+
+    </div><!-- /chat-panel -->
+
+    <!-- RIGHT: Analytics + Workflow -->
+    <div class="copilot-right reveal reveal-delay-2">
+
+      <!-- Analytics mini-cards -->
+      <div class="analytics-row" aria-label="Live AI metrics">
+        <div class="analytics-card">
+          <div class="analytics-icon" aria-hidden="true">⚡</div>
+          <div class="analytics-val">1,247</div>
+          <div class="analytics-label">AI Queries Today</div>
+          <div class="analytics-delta delta-up">↑ 23%</div>
+        </div>
+        <div class="analytics-card">
+          <div class="analytics-icon" aria-hidden="true">🔄</div>
+          <div class="analytics-val">48</div>
+          <div class="analytics-label">Active Workflows</div>
+          <div class="analytics-delta delta-up">↑ 5 new</div>
+        </div>
+        <div class="analytics-card">
+          <div class="analytics-icon" aria-hidden="true">⏱</div>
+          <div class="analytics-val">18h</div>
+          <div class="analytics-label">Staff Time Saved</div>
+          <div class="analytics-delta delta-up">Today</div>
+        </div>
+      </div>
+
+      <!-- Workflow automation -->
+      <div class="workflow-panel">
+        <div class="workflow-header">
+          <span class="workflow-live-badge">
+            <span class="workflow-dot" aria-hidden="true"></span>
+            Automation Running
+          </span>
+          <span class="workflow-name">Fee Collection → Follow-up</span>
+        </div>
+
+        <ol class="workflow-steps" aria-label="Automated workflow steps">
+
+          <li class="workflow-step step-done">
+            <div class="step-node step-node--done" aria-label="Completed">✓</div>
+            <div class="step-body">
+              <div class="step-title">Trigger: Fee due date passed</div>
+              <div class="step-meta">Matched 8 students · Grade 10</div>
+            </div>
+            <time class="step-time">9:00 AM</time>
+          </li>
+
+          <li class="workflow-step step-done">
+            <div class="step-node step-node--done" aria-label="Completed">✓</div>
+            <div class="step-body">
+              <div class="step-title">Send reminders via SMS &amp; email</div>
+              <div class="step-meta">8 delivered · 0 failed</div>
+            </div>
+            <time class="step-time">9:01 AM</time>
+          </li>
+
+          <li class="workflow-step step-active">
+            <div class="step-node step-node--active" aria-label="In progress"></div>
+            <div class="step-body">
+              <div class="step-title">Monitor payment responses</div>
+              <div class="step-meta">2 of 8 paid · awaiting</div>
+            </div>
+            <time class="step-time">Now</time>
+          </li>
+
+          <li class="workflow-step step-pending">
+            <div class="step-node step-node--pending" aria-label="Pending"></div>
+            <div class="step-body">
+              <div class="step-title">Escalate unpaid to principal</div>
+              <div class="step-meta">Scheduled · 5:00 PM</div>
+            </div>
+            <time class="step-time">5:00 PM</time>
+          </li>
+
+          <li class="workflow-step step-pending">
+            <div class="step-node step-node--pending" aria-label="Pending"></div>
+            <div class="step-body">
+              <div class="step-title">Generate final collection report</div>
+              <div class="step-meta">AI-generated PDF · on completion</div>
+            </div>
+            <time class="step-time">Auto</time>
+          </li>
+
+        </ol>
+      </div>
+
+    </div><!-- /copilot-right -->
+
+  </div><!-- /copilot-showcase -->
+
+  <!-- ── CAPABILITY CARDS ── -->
+  <div class="copilot-caps reveal reveal-delay-3" aria-label="Copilot capabilities">
+    <div class="cap-card">
+      <div class="cap-icon" aria-hidden="true">💬</div>
+      <strong class="cap-title">Natural Language</strong>
+      <p class="cap-desc">Query any data in plain English across all modules and get instant structured answers.</p>
+    </div>
+    <div class="cap-card">
+      <div class="cap-icon" aria-hidden="true">📊</div>
+      <strong class="cap-title">Predictive Analytics</strong>
+      <p class="cap-desc">Surface trends, anomalies, and risks before they escalate using AI pattern detection.</p>
+    </div>
+    <div class="cap-card">
+      <div class="cap-icon" aria-hidden="true">⚡</div>
+      <strong class="cap-title">Workflow Automation</strong>
+      <p class="cap-desc">Trigger multi-step workflows — approvals, reminders, escalations — with a single command.</p>
+    </div>
+    <div class="cap-card">
+      <div class="cap-icon" aria-hidden="true">🔒</div>
+      <strong class="cap-title">Role-Aware Context</strong>
+      <p class="cap-desc">Adapts responses, permissions, and data scope to every user role automatically.</p>
+    </div>
+  </div>
+
+</section>

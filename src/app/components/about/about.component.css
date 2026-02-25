@@ -1,0 +1,100 @@
+#about {
+  background: var(--c-surface);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
+/* Grid layout for .about-inner is in styles.css */
+
+.about-intro { margin-top: 0.75rem; }
+
+.about-mission {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--c-muted);
+  line-height: 1.75;
+}
+
+.about-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 2rem;
+}
+
+.about-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--c-muted);
+  padding: 0.25rem 0;
+  transition: color 0.2s, transform 0.25s;
+}
+
+.about-list li:hover {
+  color: var(--c-text);
+  transform: translateX(5px);
+}
+
+.check {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: rgba(0,212,160,0.15);
+  border: 1px solid rgba(0,212,160,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  color: var(--c-accent3);
+  flex-shrink: 0;
+}
+
+/* ── VISUAL GRID ── */
+.about-visual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.av-card {
+  background: var(--c-bg);
+  border: 1px solid var(--c-border);
+  border-radius: 16px;
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.25s, box-shadow 0.3s;
+}
+
+.av-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(79,142,247,0.25);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+}
+
+.av-card--featured {
+  grid-column: span 2;
+  background: linear-gradient(135deg, rgba(79,142,247,0.08), rgba(123,92,240,0.08));
+  border-color: rgba(79,142,247,0.2);
+}
+
+.av-num {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #4f8ef7, #00d4a0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+}
+
+.av-label { font-size: 0.8rem; color: var(--c-muted); margin-top: 0.25rem; }
+
+/* responsive .about-inner is in styles.css */
+
+@media (max-width: 480px) {
+  .about-visual { grid-template-columns: 1fr; }
+  .av-card--featured { grid-column: span 1; }
+}
