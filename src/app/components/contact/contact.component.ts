@@ -10,7 +10,9 @@ export class ContactComponent {
 
   contactForm: FormGroup;
   submitted     = false;
+  submitting    = false;
   submitSuccess = false;
+  submitError   = false;
 
   constructor(private fb: FormBuilder) {
     this.contactForm = this.fb.group({
@@ -48,25 +50,16 @@ export class ContactComponent {
     const cursorPos = input.selectionStart ?? 0;
     const oldVal = input.value;
 
-    // How many raw digits were before the cursor in the old display value
     const digitsBeforeCursor = oldVal.slice(0, cursorPos).replace(/\D/g, '').length;
-
-    // Strip non-digits, cap at 10
     const digits = oldVal.replace(/\D/g, '').slice(0, 10);
-
-    // Format: space after 5th digit  →  "98765 43210"
     const formatted = digits.length > 5
       ? `${digits.slice(0, 5)} ${digits.slice(5)}`
       : digits;
 
-    // Push formatted display back to DOM (we own this input, no formControlName)
     input.value = formatted;
-
-    // Sync form control with raw digits only — no space stored
     this.contactForm.get('phone')!.setValue(digits, { emitEvent: true });
     this.contactForm.get('phone')!.markAsDirty();
 
-    // Restore cursor: find index of Nth digit in the formatted string
     let newCursor = formatted.length;
     if (digitsBeforeCursor === 0) {
       newCursor = 0;
@@ -79,24 +72,45 @@ export class ContactComponent {
         }
       }
     }
-    // setTimeout defers until after Angular change detection to avoid cursor reset
     setTimeout(() => input.setSelectionRange(newCursor, newCursor), 0);
   }
 
-  handleSubmit(): void {
+  async handleSubmit(): Promise<void> {
     this.submitted = true;
     this.contactForm.markAllAsTouched();
     if (this.contactForm.invalid) return;
 
-    /* TODO: replace with real API call */
-    console.log('[ContactForm] Submitted:', this.contactForm.value);
+    this.submitting  = true;
+    this.submitError = false;
 
-    this.submitSuccess = true;
-    setTimeout(() => {
-      this.submitSuccess = false;
-      this.submitted     = false;
-      this.contactForm.reset();
-      // Phone DOM input resets naturally: form is destroyed/re-created by *ngIf="!submitSuccess"
-    }, 4000);
+    const { name, email, phone, message } = this.contactForm.value;
+
+    const body = new URLSearchParams({
+      'form-name': 'contact',
+      name,
+      email,
+      phone: `+91${phone}`,
+      message,
+    });
+
+    try {
+      const res = await fetch('/', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body:    body.toString(),
+      });
+
+      if (res.ok) {
+        this.submitSuccess = true;
+        this.submitted     = false;
+        this.contactForm.reset();
+      } else {
+        this.submitError = true;
+      }
+    } catch {
+      this.submitError = true;
+    } finally {
+      this.submitting = false;
+    }
   }
 }
