@@ -16,11 +16,10 @@ export class ContactComponent {
   }
 
   contactForm: FormGroup;
-  submitted      = false;
-  submitting     = false;
-  submitSuccess  = false;
-  submitError    = false;
-  recaptchaError = false;
+  submitted     = false;
+  submitting    = false;
+  submitSuccess = false;
+  submitError   = false;
 
   constructor(private fb: FormBuilder) {
     this.contactForm = this.fb.group({
@@ -84,10 +83,9 @@ export class ContactComponent {
   }
 
   resetForm(): void {
-    this.submitSuccess  = false;
-    this.submitted      = false;
-    this.submitError    = false;
-    this.recaptchaError = false;
+    this.submitSuccess = false;
+    this.submitted     = false;
+    this.submitError   = false;
     this.contactForm.reset();
   }
 
@@ -96,24 +94,17 @@ export class ContactComponent {
     this.contactForm.markAllAsTouched();
     if (this.contactForm.invalid) return;
 
-    // reCAPTCHA — Netlify injects g-recaptcha-response after widget is completed
-    const recaptchaToken =
-      document.querySelector<HTMLInputElement>('[name="g-recaptcha-response"]')?.value ?? '';
-    if (!recaptchaToken) {
-      this.recaptchaError = true;
-      return;
-    }
-    this.recaptchaError = false;
-
     this.submitting  = true;
     this.submitError = false;
 
     const { name, email, phone, message } = this.contactForm.value;
+    const submittedAt = new Date().toISOString();
 
     const body = new URLSearchParams({
-      'form-name':            'contact',
-      'bot-field':            '',
-      'g-recaptcha-response': recaptchaToken,
+      'form-name':    'contact',
+      'bot-field':    '',
+      'lead_source':  'website_contact',
+      'submitted_at': submittedAt,
       name,
       email,
       phone: `+91${phone}`,

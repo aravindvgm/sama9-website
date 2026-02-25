@@ -45,6 +45,7 @@
 
       <!-- Netlify hidden field — required for fetch() submission -->
       <input type="hidden" name="form-name" value="contact">
+      <input type="hidden" name="lead_source" value="website_contact">
 
       <!-- Honeypot — bots fill this, humans won't see it -->
       <p hidden>
@@ -143,16 +144,6 @@
               <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
             </svg>
             <span>Something went wrong. Please try again.</span>
-          </div>
-        </div>
-
-        <!-- reCAPTCHA — Netlify verifies this server-side -->
-        <div class="col-12">
-          <div class="recaptcha-wrap">
-            <div data-netlify-recaptcha="true"></div>
-            <div class="recaptcha-error" *ngIf="recaptchaError" role="alert">
-              Please complete the reCAPTCHA verification.
-            </div>
           </div>
         </div>
 

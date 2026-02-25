@@ -63,10 +63,12 @@
 <body>
   <!-- Netlify Forms build-time detection — DO NOT REMOVE -->
   <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
-    <input type="text"  name="name">
-    <input type="email" name="email">
-    <input type="tel"   name="phone">
-    <textarea           name="message"></textarea>
+    <input type="text"   name="name">
+    <input type="email"  name="email">
+    <input type="tel"    name="phone">
+    <textarea            name="message"></textarea>
+    <input type="hidden" name="lead_source">
+    <input type="hidden" name="submitted_at">
   </form>
 
   <app-root></app-root>
