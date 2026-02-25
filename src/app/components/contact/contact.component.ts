@@ -1,18 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import emailjs from '@emailjs/browser';
-
-// ── EmailJS auto-reply config ──────────────────────────────────────────────
-// Setup: npm install @emailjs/browser
-// 1. Create account → https://www.emailjs.com
-// 2. Add Gmail service  →  copy Service ID  → replace EJS_SERVICE
-// 3. Create template with variables {{to_name}} {{to_email}} → replace EJS_TEMPLATE
-// 4. Account → API Keys → Public Key → replace EJS_KEY
-// Template "To Email" field must be set to {{to_email}}
-const EJS_SERVICE  = 'YOUR_SERVICE_ID';
-const EJS_TEMPLATE = 'YOUR_TEMPLATE_ID';
-const EJS_KEY      = 'YOUR_PUBLIC_KEY';
-// ──────────────────────────────────────────────────────────────────────────
 
 @Component({
   selector: 'app-contact',
@@ -21,7 +8,7 @@ const EJS_KEY      = 'YOUR_PUBLIC_KEY';
 })
 export class ContactComponent {
 
-  // Scroll to success card the moment *ngIf renders it into the DOM
+  // Scrolls to success card the moment *ngIf renders it into the DOM
   @ViewChild('successCard') set successCardRef(el: ElementRef) {
     if (el) {
       setTimeout(() => el.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
@@ -97,9 +84,9 @@ export class ContactComponent {
   }
 
   resetForm(): void {
-    this.submitSuccess = false;
-    this.submitted     = false;
-    this.submitError   = false;
+    this.submitSuccess  = false;
+    this.submitted      = false;
+    this.submitError    = false;
     this.recaptchaError = false;
     this.contactForm.reset();
   }
@@ -109,7 +96,7 @@ export class ContactComponent {
     this.contactForm.markAllAsTouched();
     if (this.contactForm.invalid) return;
 
-    // reCAPTCHA — Netlify injects g-recaptcha-response into the DOM
+    // reCAPTCHA — Netlify injects g-recaptcha-response after widget is completed
     const recaptchaToken =
       document.querySelector<HTMLInputElement>('[name="g-recaptcha-response"]')?.value ?? '';
     if (!recaptchaToken) {
@@ -125,7 +112,7 @@ export class ContactComponent {
 
     const body = new URLSearchParams({
       'form-name':            'contact',
-      'bot-field':            '',           // honeypot — always empty for real users
+      'bot-field':            '',
       'g-recaptcha-response': recaptchaToken,
       name,
       email,
@@ -141,10 +128,6 @@ export class ContactComponent {
       });
 
       if (res.ok) {
-        // Auto-reply: fire-and-forget — never blocks success UX
-        emailjs.send(EJS_SERVICE, EJS_TEMPLATE, { to_name: name, to_email: email }, EJS_KEY)
-          .catch(() => { /* auto-reply failure is non-critical */ });
-
         this.submitSuccess = true;
         this.submitted     = false;
         this.contactForm.reset();

@@ -8,7 +8,7 @@
     </div>
 
     <!-- ── Success Card ── -->
-    <div class="sc-wrap" *ngIf="submitSuccess" role="status" aria-live="polite">
+    <div class="sc-wrap" #successCard *ngIf="submitSuccess" role="status" aria-live="polite">
       <div class="sc-card">
 
         <div class="sc-icon-wrap" aria-hidden="true">
@@ -45,6 +45,11 @@
 
       <!-- Netlify hidden field — required for fetch() submission -->
       <input type="hidden" name="form-name" value="contact">
+
+      <!-- Honeypot — bots fill this, humans won't see it -->
+      <p hidden>
+        <label>Don't fill this: <input name="bot-field"></label>
+      </p>
 
       <div class="row g-3">
 
@@ -138,6 +143,16 @@
               <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
             </svg>
             <span>Something went wrong. Please try again.</span>
+          </div>
+        </div>
+
+        <!-- reCAPTCHA — Netlify verifies this server-side -->
+        <div class="col-12">
+          <div class="recaptcha-wrap">
+            <div data-netlify-recaptcha="true"></div>
+            <div class="recaptcha-error" *ngIf="recaptchaError" role="alert">
+              Please complete the reCAPTCHA verification.
+            </div>
           </div>
         </div>
 

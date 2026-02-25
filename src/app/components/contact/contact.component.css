@@ -233,3 +233,21 @@ textarea.form-control { resize: vertical; min-height: 130px; }
   color: var(--c-muted);
   opacity: 0.7;
 }
+
+/* ── RECAPTCHA ── */
+.recaptcha-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.recaptcha-error {
+  font-size: 0.75rem;
+  color: #ff5f57;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 576px) {
+  .sc-card { padding: 2rem 1.5rem; }
+}
